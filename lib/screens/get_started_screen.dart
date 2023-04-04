@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../models/app_colors.dart';
+
 class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({super.key});
 
@@ -7,7 +9,7 @@ class GetStartedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xFF8EAAFB),
+        backgroundColor: AppColors.defaultBackColor,
         body: Column(children: [
           Container(
             alignment: Alignment.center,
