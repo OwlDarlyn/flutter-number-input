@@ -23,7 +23,9 @@ class GetStartedScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 160),
-          Container(),
+          Container(
+            child: Text('Number'),
+          ),
         ]),
       ),
     );
