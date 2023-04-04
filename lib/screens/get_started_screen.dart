@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/app_colors.dart';
+import '../widgets/international_phone_input_widget.dart';
 
 class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({super.key});
@@ -24,7 +25,8 @@ class GetStartedScreen extends StatelessWidget {
           ),
           const SizedBox(height: 160),
           Container(
-            child: Text('Number'),
+            padding: EdgeInsets.,
+            child: IntlPhoneNumber(),
           ),
         ]),
       ),
