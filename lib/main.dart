@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tbr_group_test_assignment/models/app_colors.dart';
 
 import '../screens/get_started_screen.dart';
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSwatch().copyWith(primary: Colors.black87),
+        colorScheme: ColorScheme.fromSwatch().copyWith(primary: Colors.black),
       ),
       home: GetStartedScreen(),
     );

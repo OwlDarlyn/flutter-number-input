@@ -7,10 +7,10 @@ class GetStartedScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColors.defaultBackColor,
-        body: Column(children: [
+    return Scaffold(
+      backgroundColor: AppColors.defaultBackColor,
+      body: SafeArea(
+        child: Column(children: [
           Container(
             alignment: Alignment.center,
             child: const Text('Lets get started'),
