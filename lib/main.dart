@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tbr_group_test_assignment/models/app_colors.dart';
 
 import '../screens/get_started_screen.dart';
 
