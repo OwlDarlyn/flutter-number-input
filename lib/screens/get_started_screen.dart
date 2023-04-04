@@ -12,9 +12,18 @@ class GetStartedScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(children: [
           Container(
-            alignment: Alignment.center,
-            child: const Text('Lets get started'),
+            margin: const EdgeInsets.only(left: 20, top: 30),
+            alignment: Alignment.bottomLeft,
+            child: const Text(
+              'Get started',
+              style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.defaultHeaderColor),
+            ),
           ),
+          const SizedBox(height: 160),
+          Container(),
         ]),
       ),
     );
