@@ -70,7 +70,7 @@ class GetStartedScreen extends StatelessWidget {
                     decoration: const InputDecoration(
                       hintText: 'Your phone number',
                       border: InputBorder.none,
-                      labelStyle: TextStyle(
+                      hintStyle: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.normal,
                           color: AppColors.phoneNumberColor1),
