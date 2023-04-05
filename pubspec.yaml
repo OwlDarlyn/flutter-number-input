@@ -31,6 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   intl_phone_number_input: ^0.7.3+1
+  fl_country_code_picker: ^0.1.2
 
 
   # The following adds the Cupertino Icons font to your application.
