@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+
 import '../models/app_colors.dart';
-// import '../widgets/international_phone_input_widget.dart';
 
 class GetStartedScreen extends StatefulWidget {
   const GetStartedScreen({super.key});
@@ -16,9 +17,10 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.white.withOpacity(0.4),
+        elevation: 0,
         onPressed: () {},
-        child: Icon(
+        child: const Icon(
           Icons.arrow_forward,
           color: AppColors.iconColor1,
           size: 40,
@@ -32,7 +34,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
               end: Alignment.bottomCenter,
               colors: [
                 AppColors.gradientColor1,
-                AppColors.gradientColor2.withOpacity(0.12)
+                AppColors.gradientColor2.withOpacity(0.012)
               ]),
         ),
         child: SafeArea(
@@ -48,7 +50,6 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                     color: AppColors.defaultHeaderColor),
               ),
             ),
-
             const SizedBox(height: 160),
             Row(children: [
               Flexible(
@@ -64,7 +65,10 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: TextButton(
-                      onPressed: () {},
+                      onPressed: () => showCupertinoModalBottomSheet(
+                          context: context,
+                          backgroundColor: AppColors.defaultBackColor,
+                          builder: (context) => Container()),
                       child: const Text(
                         '+1',
                         style: TextStyle(
@@ -101,7 +105,6 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                 ),
               ),
             ]),
-            // child: IntlPhoneNumber(), cant use cause need to separate code country and number in ui
           ]),
         ),
       ),
