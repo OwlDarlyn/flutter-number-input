@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/app_colors.dart';
-import '../widgets/international_phone_input_widget.dart';
+// import '../widgets/international_phone_input_widget.dart';
 
 class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({super.key});
@@ -22,15 +22,18 @@ class GetStartedScreen extends StatelessWidget {
         ),
         child: SafeArea(
           child: Column(children: [
-            Container(
-              margin: const EdgeInsets.only(left: 20, top: 30),
-              alignment: Alignment.bottomLeft,
-              child: const Text(
-                'Get started',
-                style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.defaultHeaderColor),
+            GestureDetector(
+              onTap: () {},
+              child: Container(
+                margin: const EdgeInsets.only(left: 20, top: 30),
+                alignment: Alignment.bottomLeft,
+                child: const Text(
+                  'Get started',
+                  style: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.defaultHeaderColor),
+                ),
               ),
             ),
             const SizedBox(height: 160),
@@ -65,7 +68,7 @@ class GetStartedScreen extends StatelessWidget {
                     textInputAction: TextInputAction.done,
                     maxLines: 1,
                     decoration: const InputDecoration(
-                      labelText: 'Your phone number',
+                      hintText: 'Your phone number',
                       border: InputBorder.none,
                       labelStyle: TextStyle(
                           fontSize: 16,
