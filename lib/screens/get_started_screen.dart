@@ -14,8 +14,16 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {}, label: Icon(Icons.arrow_forward)),
+      floatingActionButton: FloatingActionButton(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        backgroundColor: Colors.white,
+        onPressed: () {},
+        child: Icon(
+          Icons.arrow_forward,
+          color: AppColors.iconColor1,
+          size: 40,
+        ),
+      ),
       backgroundColor: AppColors.defaultBackColor,
       body: Container(
         decoration: BoxDecoration(

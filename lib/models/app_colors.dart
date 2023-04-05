@@ -10,4 +10,5 @@ class AppColors {
   static const gradientColor2 = Color(0xFF8048FB);
   static const phoneNumberColor1 = Color(0xFF7886B8);
   static const phoneNumberColor2 = Color(0xFF594C74);
+  static const iconColor1 = Color(0xFF7886B8);
 }
