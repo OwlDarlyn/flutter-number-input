@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import '../models/app_colors.dart';
+import '../widgets/bottom_modal_widget.dart';
 
 class GetStartedScreen extends StatefulWidget {
   const GetStartedScreen({super.key});
@@ -63,7 +65,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                 'Get started',
                 style: TextStyle(
                     fontSize: 32,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w700,
                     color: AppColors.defaultHeaderColor),
               ),
             ),
@@ -84,12 +86,12 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                   child: TextButton(
                       onPressed: () => showCupertinoModalBottomSheet(
                           context: context,
-                          backgroundColor: AppColors.defaultBackColor,
-                          builder: (context) => Container()),
+                          // backgroundColor: AppColors.defaultBackColor,
+                          builder: (context) => BottomModal()),
                       child: const Text(
                         '+1',
                         style: TextStyle(
-                            color: AppColors.phoneNumberColor2,
+                            color: AppColors.textColor2,
                             fontSize: 16,
                             fontWeight: FontWeight.normal),
                       )),
@@ -111,13 +113,17 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                     keyboardType: TextInputType.number,
                     textInputAction: TextInputAction.done,
                     maxLines: 1,
+                    inputFormatters: [
+                      LengthLimitingTextInputFormatter(10),
+                      FilteringTextInputFormatter.allow(RegExp('[0-9]'))
+                    ],
                     decoration: const InputDecoration(
                       hintText: 'Your phone number',
                       border: InputBorder.none,
                       hintStyle: TextStyle(
                           fontSize: 16,
-                          fontWeight: FontWeight.normal,
-                          color: AppColors.phoneNumberColor1),
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.textColor1),
                     ),
                   ),
                 ),
