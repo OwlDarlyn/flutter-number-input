@@ -41,7 +41,7 @@ class GetStartedScreen extends StatelessWidget {
                 color: Colors.white.withOpacity(0.4),
                 borderRadius: BorderRadius.circular(16),
               ),
-              child: IntlPhoneNumber(),
+              // child: IntlPhoneNumber(), cant use cause need to separate code country and number in ui
             ),
           ]),
         ),
