@@ -35,20 +35,26 @@ class GetStartedScreen extends StatelessWidget {
             ),
             const SizedBox(height: 160),
             Row(children: [
-              Expanded(
+              Flexible(
+                  flex: 2,
                   child: Container(
-                margin: const EdgeInsets.only(left: 20),
-                padding: const EdgeInsets.only(left: 10, right: 5),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.4),
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Text('+1'),
-              )),
-              // SizedBox(width: 8),
-              Expanded(
+                    height: 50,
+                    width: 70,
+                    margin: const EdgeInsets.only(left: 20),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 12, vertical: 14),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.4),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Text('+1'),
+                  )),
+              const SizedBox(width: 8),
+              Flexible(
+                flex: 6,
                 child: Container(
-                  margin: const EdgeInsets.only(left: 20, right: 15),
+                  height: 50,
+                  margin: const EdgeInsets.only(right: 15),
                   padding: const EdgeInsets.only(left: 10, right: 5),
                   decoration: BoxDecoration(
                     color: Colors.white.withOpacity(0.4),
