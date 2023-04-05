@@ -25,7 +25,12 @@ class GetStartedScreen extends StatelessWidget {
           ),
           const SizedBox(height: 160),
           Container(
-            padding: EdgeInsets.,
+            margin: const EdgeInsets.only(left: 20, right: 15),
+            padding: const EdgeInsets.only(left: 5, right: 5),
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.4),
+              borderRadius: BorderRadius.circular(16),
+            ),
             child: IntlPhoneNumber(),
           ),
         ]),
