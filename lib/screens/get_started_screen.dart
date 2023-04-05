@@ -3,12 +3,19 @@ import 'package:flutter/material.dart';
 import '../models/app_colors.dart';
 // import '../widgets/international_phone_input_widget.dart';
 
-class GetStartedScreen extends StatelessWidget {
+class GetStartedScreen extends StatefulWidget {
   const GetStartedScreen({super.key});
 
   @override
+  State<GetStartedScreen> createState() => _GetStartedScreenState();
+}
+
+class _GetStartedScreenState extends State<GetStartedScreen> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {}, label: Icon(Icons.arrow_forward)),
       backgroundColor: AppColors.defaultBackColor,
       body: Container(
         decoration: BoxDecoration(
@@ -22,36 +29,43 @@ class GetStartedScreen extends StatelessWidget {
         ),
         child: SafeArea(
           child: Column(children: [
-            GestureDetector(
-              onTap: () {},
-              child: Container(
-                margin: const EdgeInsets.only(left: 20, top: 30),
-                alignment: Alignment.bottomLeft,
-                child: const Text(
-                  'Get started',
-                  style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.defaultHeaderColor),
-                ),
+            Container(
+              margin: const EdgeInsets.only(left: 20, top: 30),
+              alignment: Alignment.bottomLeft,
+              child: const Text(
+                'Get started',
+                style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.defaultHeaderColor),
               ),
             ),
+
             const SizedBox(height: 160),
             Row(children: [
               Flexible(
-                  flex: 2,
-                  child: Container(
-                    height: 50,
-                    width: 70,
-                    margin: const EdgeInsets.only(left: 20),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 12, vertical: 14),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.4),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Text('+1'),
-                  )),
+                flex: 2,
+                child: Container(
+                  height: 50,
+                  width: 70,
+                  margin: const EdgeInsets.only(left: 20),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.4),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        '+1',
+                        style: TextStyle(
+                            color: AppColors.phoneNumberColor2,
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal),
+                      )),
+                ),
+              ),
               const SizedBox(width: 8),
               Flexible(
                 flex: 6,
