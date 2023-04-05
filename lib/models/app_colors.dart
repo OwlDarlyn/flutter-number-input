@@ -7,4 +7,5 @@ class AppColors {
   static const defaultHeaderColor = Color(0xFFFFFFFF);
   static const gradientColor1 = Color(0xFF8DA9FA);
   static const gradientColor2 = Color(0xFF8048FB);
+  static const phoneNumberColor1 = Color(0xFF7886B8);
 }
