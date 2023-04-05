@@ -10,30 +10,41 @@ class GetStartedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.defaultBackColor,
-      body: SafeArea(
-        child: Column(children: [
-          Container(
-            margin: const EdgeInsets.only(left: 20, top: 30),
-            alignment: Alignment.bottomLeft,
-            child: const Text(
-              'Get started',
-              style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.defaultHeaderColor),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                AppColors.gradientColor1,
+                AppColors.gradientColor2.withOpacity(0.12)
+              ]),
+        ),
+        child: SafeArea(
+          child: Column(children: [
+            Container(
+              margin: const EdgeInsets.only(left: 20, top: 30),
+              alignment: Alignment.bottomLeft,
+              child: const Text(
+                'Get started',
+                style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.defaultHeaderColor),
+              ),
             ),
-          ),
-          const SizedBox(height: 160),
-          Container(
-            margin: const EdgeInsets.only(left: 20, right: 15),
-            padding: const EdgeInsets.only(left: 5, right: 5),
-            decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.4),
-              borderRadius: BorderRadius.circular(16),
+            const SizedBox(height: 160),
+            Container(
+              margin: const EdgeInsets.only(left: 20, right: 15),
+              padding: const EdgeInsets.only(left: 5, right: 5),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.4),
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: IntlPhoneNumber(),
             ),
-            child: IntlPhoneNumber(),
-          ),
-        ]),
+          ]),
+        ),
       ),
     );
   }
