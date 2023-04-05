@@ -10,6 +10,7 @@ class BottomModal extends StatefulWidget {
 }
 
 class _BottomModalState extends State<BottomModal> {
+  final TextEditingController searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,8 +30,9 @@ class _BottomModalState extends State<BottomModal> {
               ),
               TextButton(
                 style: ButtonStyle(
+                    padding: MaterialStateProperty.all(const EdgeInsets.all(5)),
                     maximumSize: MaterialStateProperty.all(const Size(30, 30)),
-                    minimumSize: MaterialStateProperty.all(const Size(30, 30)),
+                    minimumSize: MaterialStateProperty.all(const Size(20, 20)),
                     elevation: MaterialStateProperty.all(0),
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10))),
@@ -38,11 +40,11 @@ class _BottomModalState extends State<BottomModal> {
                         Colors.white.withOpacity(0.4))),
                 child: const Icon(
                   Icons.close,
-                  size: 20,
-                  color: AppColors.iconColor1,
+                  size: 16,
+                  color: AppColors.iconColor2,
                 ),
                 onPressed: () {},
-              )
+              ),
             ],
           ),
         ),
@@ -55,18 +57,21 @@ class _BottomModalState extends State<BottomModal> {
             borderRadius: BorderRadius.circular(16),
           ),
           child: TextFormField(
+              controller: searchController,
+              textInputAction: TextInputAction.done,
+              maxLines: 1,
               decoration: const InputDecoration(
-            icon: Icon(
-              Icons.search,
-              color: AppColors.iconColor2,
-            ),
-            hintText: 'Search',
-            border: InputBorder.none,
-            hintStyle: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: AppColors.textColor2),
-          )),
+                icon: Icon(
+                  Icons.search,
+                  color: AppColors.iconColor2,
+                ),
+                hintText: 'Search',
+                border: InputBorder.none,
+                hintStyle: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.textColor2),
+              )),
         ),
       ]),
     );

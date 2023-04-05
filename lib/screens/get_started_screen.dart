@@ -15,7 +15,7 @@ class GetStartedScreen extends StatefulWidget {
 
 class _GetStartedScreenState extends State<GetStartedScreen> {
   bool buttonEnable = false;
-  final phoneNumberController = TextEditingController();
+  final TextEditingController phoneNumberController = TextEditingController();
 
   @override
   void initState() {
