@@ -12,13 +12,30 @@ class GetStartedScreen extends StatefulWidget {
 }
 
 class _GetStartedScreenState extends State<GetStartedScreen> {
+  bool buttonEnable = false;
+  final phoneNumberController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    phoneNumberController.addListener(() {
+      setState(() {
+        buttonEnable = phoneNumberController.text.length == 10;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        backgroundColor: Colors.white.withOpacity(0.4),
-        elevation: 0,
+      floatingActionButton: ElevatedButton(
+        style: ButtonStyle(
+            padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
+            elevation: MaterialStateProperty.all(0),
+            backgroundColor: MaterialStateProperty.all(
+                buttonEnable ? Colors.white : Colors.white.withOpacity(0.4)),
+            shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16)))),
         onPressed: () {},
         child: const Icon(
           Icons.arrow_forward,
@@ -90,6 +107,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: TextFormField(
+                    controller: phoneNumberController,
                     keyboardType: TextInputType.number,
                     textInputAction: TextInputAction.done,
                     maxLines: 1,
