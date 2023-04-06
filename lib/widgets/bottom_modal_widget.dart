@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:tbr_group_test_assignment/models/country.dart';
 
 import '../models/app_colors.dart';
+import '../api/countries_api.dart';
+import 'dart:developer';
 
 class BottomModal extends StatefulWidget {
   const BottomModal({super.key});
@@ -11,6 +14,14 @@ class BottomModal extends StatefulWidget {
 
 class _BottomModalState extends State<BottomModal> {
   final TextEditingController searchController = TextEditingController();
+  late List<Country> countries;
+
+  @override
+  void initState() {
+    super.initState();
+    log(fetchCountries().toString());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

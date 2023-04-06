@@ -30,7 +30,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: ElevatedButton(
+      floatingActionButton: TextButton(
         style: ButtonStyle(
             padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
             elevation: MaterialStateProperty.all(0),

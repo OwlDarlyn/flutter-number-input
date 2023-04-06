@@ -30,9 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  intl_phone_number_input: ^0.7.3+1
-  country_code_picker: ^3.0.0
   modal_bottom_sheet: ^3.0.0-pre
+  http: ^0.13.5
 
 
   # The following adds the Cupertino Icons font to your application.
