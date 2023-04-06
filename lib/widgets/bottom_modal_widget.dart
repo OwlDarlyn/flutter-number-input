@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tbr_group_test_assignment/provider/countries_provider.dart';
 
 import '../models/country.dart';
 import '../models/app_colors.dart';
@@ -15,16 +17,17 @@ class BottomModal extends StatefulWidget {
 
 class _BottomModalState extends State<BottomModal> {
   final TextEditingController searchController = TextEditingController();
-  late List<Country> countries = [];
 
   @override
   void initState() {
     super.initState();
-    log(fetchCountries().toString());
+    context.read<Countries>().getCountries();
   }
 
   @override
   Widget build(BuildContext context) {
+    final List<Country> countries = context.watch<Countries>().countries;
+    final search = context.watch<Countries>().searchString;
     return Scaffold(
       backgroundColor: AppColors.defaultBackColor,
       body: Column(children: [
@@ -73,6 +76,8 @@ class _BottomModalState extends State<BottomModal> {
           ),
           child: TextFormField(
               controller: searchController,
+              onChanged: (value) =>
+                  context.read<Countries>().searchCountries(value),
               textInputAction: TextInputAction.done,
               maxLines: 1,
               decoration: const InputDecoration(
@@ -89,57 +94,47 @@ class _BottomModalState extends State<BottomModal> {
               )),
         ),
         Expanded(
-          child: FutureBuilder<List<Country>>(
-              future: fetchCountries(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  snapshot.data!.sort(
-                      (a, b) => a.name.toString().compareTo(b.name.toString()));
-                  return ListView.builder(
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    itemCount: snapshot.data!.length,
-                    itemBuilder: (context, index) {
-                      if (snapshot.data![index].countryCode != '') {
-                        return Container(
-                            alignment: Alignment.bottomCenter,
-                            margin: const EdgeInsets.only(
-                                top: 10, left: 35, right: 20),
-                            child: Row(children: [
-                              Text(snapshot.data![index].flag,
-                                  style: TextStyle(fontSize: 22)),
-                              const SizedBox(width: 12),
-                              Text(
-                                snapshot.data![index].countryCode,
-                                style: const TextStyle(
-                                    color: AppColors.textColor2,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 16),
-                              ),
-                              Text(snapshot.data![index].phoneSuffix.length == 1
-                                  ? snapshot.data![index].phoneSuffix[0]
-                                  : ''),
-                              const SizedBox(width: 12),
-                              Text(
-                                snapshot.data![index].name,
-                                maxLines: 2,
-                                softWrap: true,
-                                style: const TextStyle(
-                                    color: AppColors.textColor3,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 16),
-                              ),
-                            ]));
-                      }
-                      return Container();
-                    },
-                  );
-                } else if (snapshot.hasError) {
-                  return Text('${snapshot.error}');
-                }
-                return const CircularProgressIndicator();
-              }),
-        ),
+            child: ListView.builder(
+          itemCount: countries.length,
+          itemBuilder: (context, index) {
+            if (countries[index].countryCode != '' &&
+                countries[index]
+                    .name
+                    .toLowerCase()
+                    .startsWith(search.toLowerCase())) {
+              countries.sort(
+                  (a, b) => a.name.toString().compareTo(b.name.toString()));
+
+              return Container(
+                margin: const EdgeInsets.only(top: 10, left: 35, right: 20),
+                child: Row(children: [
+                  Text(
+                    countries[index].flag,
+                    style: const TextStyle(fontSize: 22),
+                  ),
+                  const SizedBox(width: 12),
+                  Text(
+                    countries[index].countryCode,
+                    style: const TextStyle(
+                        color: AppColors.textColor2,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16),
+                  ),
+                  const SizedBox(width: 12),
+                  Text(
+                    countries[index].name,
+                    style: const TextStyle(
+                        color: AppColors.textColor3,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16),
+                  )
+                ]),
+              );
+            } else {
+              return Container();
+            }
+          },
+        )),
       ]),
     );
   }
