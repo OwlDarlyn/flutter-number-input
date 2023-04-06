@@ -93,40 +93,45 @@ class _BottomModalState extends State<BottomModal> {
               future: fetchCountries(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
+                  snapshot.data!.sort(
+                      (a, b) => a.name.toString().compareTo(b.name.toString()));
                   return ListView.builder(
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
                     itemCount: snapshot.data!.length,
                     itemBuilder: (context, index) {
-                      return Container(
-                          alignment: Alignment.bottomCenter,
-                          margin: const EdgeInsets.only(
-                              top: 10, left: 35, right: 20),
-                          child: Row(children: [
-                            Text(snapshot.data![index].flag,
-                                style: TextStyle(fontSize: 22)),
-                            const SizedBox(width: 12),
-                            Text(
-                              snapshot.data![index].countryCode,
-                              style: const TextStyle(
-                                  color: AppColors.textColor2,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16),
-                            ),
-                            Text(snapshot.data![index].phoneSuffix.length == 1
-                                ? snapshot.data![index].phoneSuffix[0]
-                                : ''),
-                            const SizedBox(width: 12),
-                            Text(
-                              snapshot.data![index].name,
-                              maxLines: 2,
-                              softWrap: true,
-                              style: const TextStyle(
-                                  color: AppColors.textColor3,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16),
-                            ),
-                          ]));
+                      if (snapshot.data![index].countryCode != '') {
+                        return Container(
+                            alignment: Alignment.bottomCenter,
+                            margin: const EdgeInsets.only(
+                                top: 10, left: 35, right: 20),
+                            child: Row(children: [
+                              Text(snapshot.data![index].flag,
+                                  style: TextStyle(fontSize: 22)),
+                              const SizedBox(width: 12),
+                              Text(
+                                snapshot.data![index].countryCode,
+                                style: const TextStyle(
+                                    color: AppColors.textColor2,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16),
+                              ),
+                              Text(snapshot.data![index].phoneSuffix.length == 1
+                                  ? snapshot.data![index].phoneSuffix[0]
+                                  : ''),
+                              const SizedBox(width: 12),
+                              Text(
+                                snapshot.data![index].name,
+                                maxLines: 2,
+                                softWrap: true,
+                                style: const TextStyle(
+                                    color: AppColors.textColor3,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16),
+                              ),
+                            ]));
+                      }
+                      return Container();
                     },
                   );
                 } else if (snapshot.hasError) {
