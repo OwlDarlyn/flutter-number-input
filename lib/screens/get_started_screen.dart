@@ -118,7 +118,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                       FilteringTextInputFormatter.allow(RegExp('[0-9]'))
                     ],
                     decoration: const InputDecoration(
-                      hintText: 'Your phone number',
+                      hintText: '(123) 123-1234',
                       border: InputBorder.none,
                       hintStyle: TextStyle(
                           fontSize: 16,
