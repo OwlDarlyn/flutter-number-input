@@ -88,38 +88,43 @@ class _BottomModalState extends State<BottomModal> {
                     color: AppColors.textColor2),
               )),
         ),
-        Container(
-          alignment: Alignment.bottomLeft,
-          margin: const EdgeInsets.only(top: 25, left: 20, right: 20),
-          child: Text('hi'),
-        ),
         Center(
           child: FutureBuilder<List<Country>>(
               future: fetchCountries(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  return SizedBox(
-                    height: 400,
-                    child: ListView.builder(
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      itemCount: snapshot.data!.length,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          padding: const EdgeInsets.only(
-                              top: 25, left: 20, right: 20),
-                          child: Column(children: [
-                            Container(
-                              child: Row(children: [
-                                Text(snapshot.data![index].flag),
-                                Text(snapshot.data![index].countryCode),
-                                Text(snapshot.data![index].name),
-                              ]),
-                            )
-                          ]),
-                        );
-                      },
-                    ),
+                  return ListView.builder(
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        alignment: Alignment.bottomCenter,
+                        padding:
+                            const EdgeInsets.only(top: 25, left: 35, right: 20),
+                        child: Column(children: [
+                          Row(children: [
+                            Text(snapshot.data![index].flag),
+                            const SizedBox(width: 12),
+                            Text(
+                              snapshot.data![index].countryCode,
+                              style: const TextStyle(
+                                  color: AppColors.textColor2,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16),
+                            ),
+                            const SizedBox(width: 12),
+                            Text(
+                              snapshot.data![index].name,
+                              style: const TextStyle(
+                                  color: AppColors.textColor3,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16),
+                            ),
+                          ])
+                        ]),
+                      );
+                    },
                   );
                 } else if (snapshot.hasError) {
                   return Text('${snapshot.error}');
