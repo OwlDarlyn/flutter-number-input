@@ -21,7 +21,6 @@ class _BottomModalState extends State<BottomModal> {
   @override
   void initState() {
     super.initState();
-    context.read<Countries>().getCountries();
   }
 
   @override
@@ -105,30 +104,49 @@ class _BottomModalState extends State<BottomModal> {
               countries.sort(
                   (a, b) => a.name.toString().compareTo(b.name.toString()));
 
-              return Container(
-                margin: const EdgeInsets.only(top: 10, left: 35, right: 20),
-                child: Row(children: [
-                  Text(
-                    countries[index].flag,
-                    style: const TextStyle(fontSize: 22),
-                  ),
-                  const SizedBox(width: 12),
-                  Text(
-                    countries[index].countryCode,
-                    style: const TextStyle(
-                        color: AppColors.textColor2,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16),
-                  ),
-                  const SizedBox(width: 12),
-                  Text(
-                    countries[index].name,
-                    style: const TextStyle(
-                        color: AppColors.textColor3,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16),
-                  )
-                ]),
+              return GestureDetector(
+                onTap: () {
+                  context.read<Countries>().selectCountry(countries[index]);
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(top: 10, left: 35, right: 20),
+                  child: Row(children: [
+                    Text(
+                      countries[index].flag,
+                      style: const TextStyle(fontSize: 22),
+                    ),
+                    const SizedBox(width: 12),
+                    Text(
+                      countries[index].countryCode,
+                      style: const TextStyle(
+                          color: AppColors.textColor2,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16),
+                    ),
+                    Text(
+                      countries[index].phoneSuffix.length == 1
+                          ? countries[index].phoneSuffix[0]
+                          : '',
+                      style: const TextStyle(
+                          color: AppColors.textColor2,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16),
+                    ),
+                    const SizedBox(width: 12),
+                    Flexible(
+                      child: Text(
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        countries[index].name,
+                        style: const TextStyle(
+                            color: AppColors.textColor3,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16),
+                      ),
+                    )
+                  ]),
+                ),
               );
             } else {
               return Container();

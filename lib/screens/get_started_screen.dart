@@ -1,10 +1,15 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:provider/provider.dart';
 
 import '../models/app_colors.dart';
+import '../models/country.dart';
 import '../widgets/bottom_modal_widget.dart';
+import '../provider/countries_provider.dart';
 
 class GetStartedScreen extends StatefulWidget {
   const GetStartedScreen({super.key});
@@ -25,10 +30,12 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
         buttonEnable = phoneNumberController.text.length == 10;
       });
     });
+    context.read<Countries>().getCountries();
   }
 
   @override
   Widget build(BuildContext context) {
+    final Country selectedCountry = context.watch<Countries>().selectedCountry;
     return Scaffold(
       floatingActionButton: TextButton(
         style: ButtonStyle(
@@ -59,7 +66,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
         child: SafeArea(
           child: Column(children: [
             Container(
-              margin: const EdgeInsets.only(left: 20, top: 30),
+              margin: const EdgeInsets.only(left: 20, top: 30, right: 20),
               alignment: Alignment.bottomLeft,
               child: const Text(
                 'Get started',
@@ -74,11 +81,12 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
               Flexible(
                 flex: 2,
                 child: Container(
+                  alignment: Alignment.topCenter,
                   height: 50,
-                  width: 70,
+                  width: 100,
                   margin: const EdgeInsets.only(left: 20),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                  // padding: const EdgeInsets.only(
+                  //     left: 5, right: 5, top: 2, bottom: 2),
                   decoration: BoxDecoration(
                     color: Colors.white.withOpacity(0.4),
                     borderRadius: BorderRadius.circular(16),
@@ -89,9 +97,13 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
 
                           // backgroundColor: AppColors.defaultBackColor,
                           builder: (context) => const BottomModal()),
-                      child: const Text(
-                        '+1',
-                        style: TextStyle(
+                      child: Text(
+                        selectedCountry.flag +
+                            selectedCountry.countryCode +
+                            (selectedCountry.phoneSuffix.length == 1
+                                ? selectedCountry.phoneSuffix[0]
+                                : ''),
+                        style: const TextStyle(
                             color: AppColors.textColor2,
                             fontSize: 16,
                             fontWeight: FontWeight.normal),
