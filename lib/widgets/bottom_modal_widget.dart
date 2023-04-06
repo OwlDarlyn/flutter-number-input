@@ -88,7 +88,7 @@ class _BottomModalState extends State<BottomModal> {
                     color: AppColors.textColor2),
               )),
         ),
-        Center(
+        Expanded(
           child: FutureBuilder<List<Country>>(
               future: fetchCountries(),
               builder: (context, snapshot) {
@@ -99,12 +99,12 @@ class _BottomModalState extends State<BottomModal> {
                     itemCount: snapshot.data!.length,
                     itemBuilder: (context, index) {
                       return Container(
-                        alignment: Alignment.bottomCenter,
-                        padding:
-                            const EdgeInsets.only(top: 25, left: 35, right: 20),
-                        child: Column(children: [
-                          Row(children: [
-                            Text(snapshot.data![index].flag),
+                          alignment: Alignment.bottomCenter,
+                          margin: const EdgeInsets.only(
+                              top: 10, left: 35, right: 20),
+                          child: Row(children: [
+                            Text(snapshot.data![index].flag,
+                                style: TextStyle(fontSize: 22)),
                             const SizedBox(width: 12),
                             Text(
                               snapshot.data![index].countryCode,
@@ -113,17 +113,20 @@ class _BottomModalState extends State<BottomModal> {
                                   fontWeight: FontWeight.w500,
                                   fontSize: 16),
                             ),
+                            Text(snapshot.data![index].phoneSuffix.length == 1
+                                ? snapshot.data![index].phoneSuffix[0]
+                                : ''),
                             const SizedBox(width: 12),
                             Text(
                               snapshot.data![index].name,
+                              maxLines: 2,
+                              softWrap: true,
                               style: const TextStyle(
                                   color: AppColors.textColor3,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 16),
                             ),
-                          ])
-                        ]),
-                      );
+                          ]));
                     },
                   );
                 } else if (snapshot.hasError) {
@@ -131,7 +134,7 @@ class _BottomModalState extends State<BottomModal> {
                 }
                 return const CircularProgressIndicator();
               }),
-        )
+        ),
       ]),
     );
   }
