@@ -19,10 +19,6 @@ class Country {
       countryCode: json['idd']['root'] != '' ? json['idd']['root'] : '',
       phoneSuffix:
           json['idd']['suffixes'].length > 0 ? json['idd']['suffixes'] : [],
-      // phoneSuffix:
-      //     json['idd']['root'] != '' && json['idd']['suffixes'].length == 1
-      //         ? json['idd']['suffixes'][0]
-      //         : '',
       flag: json['flag'],
     );
   }
