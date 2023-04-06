@@ -27,37 +27,40 @@ class _BottomModalState extends State<BottomModal> {
     return Scaffold(
       backgroundColor: AppColors.defaultBackColor,
       body: Column(children: [
-        Container(
-          margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              margin: const EdgeInsets.only(top: 20, left: 20),
+              child: const Text(
                 'Country code',
                 style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.w700,
                     color: AppColors.defaultHeaderColor),
               ),
-              TextButton(
+            ),
+            Container(
+              margin: const EdgeInsets.only(right: 5, top: 5),
+              child: TextButton(
                 style: ButtonStyle(
                     padding: MaterialStateProperty.all(const EdgeInsets.all(5)),
-                    maximumSize: MaterialStateProperty.all(const Size(30, 30)),
-                    minimumSize: MaterialStateProperty.all(const Size(20, 20)),
+                    maximumSize: MaterialStateProperty.all(const Size(22, 22)),
+                    minimumSize: MaterialStateProperty.all(const Size(18, 18)),
                     elevation: MaterialStateProperty.all(0),
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10))),
+                        borderRadius: BorderRadius.circular(8))),
                     backgroundColor: MaterialStateProperty.all(
                         Colors.white.withOpacity(0.4))),
                 child: const Icon(
                   Icons.close,
-                  size: 16,
+                  size: 12,
                   color: AppColors.iconColor2,
                 ),
                 onPressed: () {},
               ),
-            ],
-          ),
+            ),
+          ],
         ),
         Container(
           margin: const EdgeInsets.only(right: 20, top: 20, left: 20),
@@ -84,6 +87,7 @@ class _BottomModalState extends State<BottomModal> {
                     color: AppColors.textColor2),
               )),
         ),
+        Container(),
       ]),
     );
   }
