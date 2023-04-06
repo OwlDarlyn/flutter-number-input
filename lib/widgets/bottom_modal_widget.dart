@@ -57,7 +57,7 @@ class _BottomModalState extends State<BottomModal> {
                   size: 12,
                   color: AppColors.iconColor2,
                 ),
-                onPressed: () {},
+                onPressed: () => Navigator.pop(context),
               ),
             ),
           ],
