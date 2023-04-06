@@ -1,9 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:tbr_group_test_assignment/models/country.dart';
+import 'dart:developer';
 
+import 'package:flutter/material.dart';
+
+import '../models/country.dart';
 import '../models/app_colors.dart';
 import '../api/countries_api.dart';
-import 'dart:developer';
 
 class BottomModal extends StatefulWidget {
   const BottomModal({super.key});
@@ -14,7 +15,7 @@ class BottomModal extends StatefulWidget {
 
 class _BottomModalState extends State<BottomModal> {
   final TextEditingController searchController = TextEditingController();
-  late List<Country> countries;
+  late List<Country> countries = [];
 
   @override
   void initState() {
@@ -87,7 +88,45 @@ class _BottomModalState extends State<BottomModal> {
                     color: AppColors.textColor2),
               )),
         ),
-        Container(),
+        Container(
+          alignment: Alignment.bottomLeft,
+          margin: const EdgeInsets.only(top: 25, left: 20, right: 20),
+          child: Text('hi'),
+        ),
+        Center(
+          child: FutureBuilder<List<Country>>(
+              future: fetchCountries(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return SizedBox(
+                    height: 400,
+                    child: ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          padding: const EdgeInsets.only(
+                              top: 25, left: 20, right: 20),
+                          child: Column(children: [
+                            Container(
+                              child: Row(children: [
+                                Text(snapshot.data![index].flag),
+                                Text(snapshot.data![index].countryCode),
+                                Text(snapshot.data![index].name),
+                              ]),
+                            )
+                          ]),
+                        );
+                      },
+                    ),
+                  );
+                } else if (snapshot.hasError) {
+                  return Text('${snapshot.error}');
+                }
+                return const CircularProgressIndicator();
+              }),
+        )
       ]),
     );
   }

@@ -15,7 +15,7 @@ class Country {
 
   factory Country.fromJson(Map<String, dynamic> json) {
     return Country(
-      name: json['name']['official'],
+      name: json['name']['common'],
       countryCode: json['idd']['root'] != '' ? json['idd']['root'] : '',
       // phoneSuffix:
       //     json['idd']['root'] != '' && json['idd']['suffixes'].length == 1

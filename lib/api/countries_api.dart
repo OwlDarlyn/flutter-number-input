@@ -14,7 +14,7 @@ Future<List<Country>> fetchCountries() async {
   final response = await http.get(
       Uri.parse('https://restcountries.com/v3.1/all?fields=name,idd,flag'));
   if (response.statusCode == 200) {
-    log(response.body);
+    // log(response.body);
     return parseCountry(response.body);
 
     // return (json.decode(response.body))

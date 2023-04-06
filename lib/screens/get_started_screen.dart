@@ -86,6 +86,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                   child: TextButton(
                       onPressed: () => showCupertinoModalBottomSheet(
                           context: context,
+
                           // backgroundColor: AppColors.defaultBackColor,
                           builder: (context) => const BottomModal()),
                       child: const Text(
