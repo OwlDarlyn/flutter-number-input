@@ -23,8 +23,9 @@ class Countries extends ChangeNotifier {
     final http.Response parseCountry =
         await http.get(Uri.parse('http://ip-api.com/json'));
     final Map responseBody = json.decode(parseCountry.body);
-    _selectedCountry =
-        _countries.where((country) => country.name == 'Estonia').toList()[0];
+    _selectedCountry = _countries
+        .where((country) => country.name == responseBody['country'])
+        .toList()[0];
     notifyListeners();
   }
 

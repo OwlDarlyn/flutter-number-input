@@ -97,10 +97,13 @@ class _BottomModalState extends State<BottomModal> {
           itemCount: countries.length,
           itemBuilder: (context, index) {
             if (countries[index].countryCode != '' &&
-                countries[index]
-                    .name
-                    .toLowerCase()
-                    .startsWith(search.toLowerCase())) {
+                (countries[index]
+                        .name
+                        .toLowerCase()
+                        .startsWith(search.toLowerCase()) ||
+                    (countries[index].countryCode +
+                            countries[index].phoneSuffix[0])
+                        .startsWith(search))) {
               countries.sort(
                   (a, b) => a.name.toString().compareTo(b.name.toString()));
 
