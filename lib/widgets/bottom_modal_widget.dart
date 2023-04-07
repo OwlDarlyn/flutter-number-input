@@ -100,10 +100,10 @@ class _BottomModalState extends State<BottomModal> {
                 (countries[index]
                         .name
                         .toLowerCase()
-                        .startsWith(search.toLowerCase()) ||
+                        .contains(search.toLowerCase()) ||
                     (countries[index].countryCode +
                             countries[index].phoneSuffix[0])
-                        .startsWith(search))) {
+                        .contains(search))) {
               countries.sort(
                   (a, b) => a.name.toString().compareTo(b.name.toString()));
 
