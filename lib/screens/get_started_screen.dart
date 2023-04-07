@@ -27,7 +27,6 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
   void initState() {
     super.initState();
     phoneNumberController.addListener(() {
-      log(phoneNumberController.text.length.toString());
       setState(() {
         buttonEnable = phoneNumberController.text.length == 14;
       });
