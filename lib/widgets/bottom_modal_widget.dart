@@ -111,6 +111,7 @@ class _BottomModalState extends State<BottomModal> {
                 onTap: () {
                   context.read<Countries>().selectCountry(countries[index]);
                   Navigator.pop(context);
+                  context.read<Countries>().searchCountries("");
                 },
                 child: Container(
                   margin: const EdgeInsets.only(top: 10, left: 35, right: 20),
