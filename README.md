@@ -1,16 +1,24 @@
-# tbr_group_test_assignment
+# TBR Group test assignment
 
-A new Flutter project.
+Test assignment from TBR Group;
 
-## Getting Started
+## How to run?
 
-This project is a starting point for a Flutter application.
+* flutter clean
+* flutter pub get
+* flutter run
 
-A few resources to get you started if this is your first Flutter project:
+## About
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+A simple one screen application with phone input.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+API used https://restcountries.com/v3.1/
+
+## Packages used
+
+* modal_bottom_sheet v3.0.0-pre
+* http v0.13.5
+* provider v6.0.5
+* flutter_multi_formatter v2.10.2
+
+
