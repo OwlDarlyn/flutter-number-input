@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
@@ -26,8 +27,9 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
   void initState() {
     super.initState();
     phoneNumberController.addListener(() {
+      log(phoneNumberController.text.length.toString());
       setState(() {
-        buttonEnable = phoneNumberController.text.length == 10;
+        buttonEnable = phoneNumberController.text.length == 14;
       });
     });
     context.read<Countries>().getCountries();
@@ -39,16 +41,18 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
     return Scaffold(
       floatingActionButton: TextButton(
         style: ButtonStyle(
+            // splashFactory:
+            //     buttonEnable ? InkSplash.splashFactory : NoSplash.splashFactory,
             padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
             elevation: MaterialStateProperty.all(0),
             backgroundColor: MaterialStateProperty.all(
                 buttonEnable ? Colors.white : Colors.white.withOpacity(0.4)),
             shape: MaterialStateProperty.all(RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16)))),
-        onPressed: () {},
-        child: const Icon(
+        onPressed: () => buttonEnable ? log(selectedCountry.name) : null,
+        child: Icon(
           Icons.arrow_forward,
-          color: AppColors.iconColor1,
+          color: buttonEnable ? AppColors.iconColor2 : AppColors.iconColor1,
           size: 40,
         ),
       ),
@@ -83,7 +87,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                 child: Container(
                   alignment: Alignment.topCenter,
                   height: 50,
-                  width: 100,
+                  width: 150,
                   margin: const EdgeInsets.only(left: 20),
                   // padding: const EdgeInsets.only(
                   //     left: 5, right: 5, top: 2, bottom: 2),
@@ -112,7 +116,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
               ),
               const SizedBox(width: 8),
               Flexible(
-                flex: 6,
+                flex: 5,
                 child: Container(
                   height: 50,
                   margin: const EdgeInsets.only(right: 15),
@@ -125,10 +129,12 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                     controller: phoneNumberController,
                     keyboardType: TextInputType.number,
                     textInputAction: TextInputAction.done,
+                    autocorrect: false,
                     maxLines: 1,
                     inputFormatters: [
-                      LengthLimitingTextInputFormatter(10),
-                      FilteringTextInputFormatter.allow(RegExp('[0-9]'))
+                      FilteringTextInputFormatter.allow(RegExp(r'[\()\-\0-9]')),
+                      LengthLimitingTextInputFormatter(14),
+                      MaskedInputFormatter("(###) ###-####")
                     ],
                     decoration: const InputDecoration(
                       hintText: '(123) 123-1234',
