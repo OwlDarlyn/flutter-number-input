@@ -41,8 +41,8 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
     return Scaffold(
       floatingActionButton: TextButton(
         style: ButtonStyle(
-            // splashFactory:
-            //     buttonEnable ? InkSplash.splashFactory : NoSplash.splashFactory,
+            splashFactory:
+                buttonEnable ? InkSplash.splashFactory : NoSplash.splashFactory,
             padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
             elevation: MaterialStateProperty.all(0),
             backgroundColor: MaterialStateProperty.all(
@@ -82,24 +82,18 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
             ),
             const SizedBox(height: 160),
             Row(children: [
-              Flexible(
-                flex: 2,
-                child: Container(
-                  alignment: Alignment.topCenter,
-                  height: 50,
-                  width: 150,
-                  margin: const EdgeInsets.only(left: 20),
-                  // padding: const EdgeInsets.only(
-                  //     left: 5, right: 5, top: 2, bottom: 2),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.4),
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: TextButton(
+              Row(mainAxisSize: MainAxisSize.min, children: [
+                Container(
+                    height: 50,
+                    alignment: Alignment.topCenter,
+                    margin: const EdgeInsets.only(left: 20),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.4),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: TextButton(
                       onPressed: () => showCupertinoModalBottomSheet(
                           context: context,
-
-                          // backgroundColor: AppColors.defaultBackColor,
                           builder: (context) => const BottomModal()),
                       child: Text(
                         selectedCountry.flag +
@@ -111,9 +105,9 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                             color: AppColors.textColor2,
                             fontSize: 16,
                             fontWeight: FontWeight.normal),
-                      )),
-                ),
-              ),
+                      ),
+                    )),
+              ]),
               const SizedBox(width: 8),
               Flexible(
                 flex: 5,
@@ -126,6 +120,10 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: TextFormField(
+                    style: const TextStyle(
+                        color: AppColors.textColor2,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500),
                     controller: phoneNumberController,
                     keyboardType: TextInputType.number,
                     textInputAction: TextInputAction.done,
