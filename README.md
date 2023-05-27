@@ -1,16 +1,8 @@
-# TBR Group test assignment
+# Number Input
 
-Test assignment from TBR Group;
-
-## How to run?
-
-* flutter clean
-* flutter pub get
-* flutter run
+A simple one screen application for entering and verifying a phone number
 
 ## About
-
-A simple one screen application with phone input.
 
 API used https://restcountries.com/v3.1/
 
