@@ -13,4 +13,13 @@ API used https://restcountries.com/v3.1/
 * provider v6.0.5
 * flutter_multi_formatter v2.10.2
 
+## App's screens
+
+![](1.png)
+![](2.png)
+![](3.png)
+![](4.png)
+![](5.png)
+
+
 
