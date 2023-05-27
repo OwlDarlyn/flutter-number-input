@@ -1,6 +1,6 @@
 # Number Input
 
-A simple one screen application for entering and verifying a phone number
+A simple one screen application for entering and verifying a phone number.
 
 ## About
 
